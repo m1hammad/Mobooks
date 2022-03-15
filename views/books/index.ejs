@@ -1,3 +1,9 @@
+<% if(currentUser) {%> 
+    <h2>Welcome Back <%= currentUser.firstName %> <%= currentUser.lastName %></h2><br><br>
+ 
+ <% } else{ %>     
+    <h2>Welcome to MoBooks. Please <a href="/auth/signin">login</a>.</h2><br><br>
+ <% } %> 
 <h1>MoBooks</h1>
 <h4>Make a library of the books you want to read</h4>
 <div>

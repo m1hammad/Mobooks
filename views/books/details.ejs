@@ -1,0 +1,47 @@
+
+<div>
+    <img src="<%= data.imageLink %> " style="width: 20rem;">
+</div>
+
+<div>
+    <h2><%= data.title %></h2>
+
+</div>
+<div>Authors:
+    <% data.author.forEach(author =>{ %> 
+        <h4><%= author.name %> </h4>
+    <% }) %> 
+</div>
+<div> Genre:
+    <% data.genre.forEach(genre =>{ %> 
+        <h4><%= genre %> </h4>
+    <% }) %> 
+</div>
+<div>Publisher: 
+    <h4><%= data.publisher %> </h4>
+</div>
+<div> Date Published: 
+    <h4><%= data.publishDate %></h4>
+</div>
+<div><h5>Description:</h5>
+    <p id="desc">
+        <%= data.description %> 
+    </p>
+</div>
+
+<% if(currentUser){ %> 
+    <form action="/books/add" method="post">
+        <input type="hidden" name="imageLink" value="<%= data.imageLink%>">
+        <input type="hidden" name="title" value="<%= data.title %>">
+        <% data.author.forEach(author =>{ %> 
+            <input type="hidden" name="name" value="<%= author.name %>">
+        <% }) %> 
+        <% data.genre.forEach(genre =>{ %> 
+            <input type="hidden" name="genre" value="<%= genre %>">
+        <% }) %>     
+        <input type="hidden" name="publisher" value="<%= data.publisher %>">
+        <input type="hidden" name="publishDate" value="<%= data.publishDate %>">
+        <input type="hidden" name="description" value="<%= data.description %>">
+        <button type="submit" class="btn btn-primary">Add to Favourites</button>
+    </form>
+<% } %> 

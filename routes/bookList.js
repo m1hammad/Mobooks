@@ -4,6 +4,8 @@ const bookCtrl = require('../controllers/bookList')
 
 router.get('/all',bookCtrl.books_get)
 
-router.post('/random', bookCtrl.books_post)
+router.post('/add', bookCtrl.books_post)
+
+router.get('/detail/:id', bookCtrl.books_get_details)
 
 module.exports = router
