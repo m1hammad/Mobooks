@@ -2,7 +2,7 @@ const Books = require('../models/Books')
 const Authors = require('../models/Authors')
 
 exports.books_get = (req, res) => {
-    Books.find()
+    Books.find().populate('author')
     .then(books =>{
         res.render('books/bookList', {data: books})
     })
@@ -19,11 +19,12 @@ exports.books_post = (req, res) => {
                 if (obj && obj.name === req.body.name) {
                     console.log('first',obj.name)
                     books.author.push(obj._id)
+                    books.users.push(req.user._id)
                     obj.book.push(books._id)
                     obj.save()
                     books.save()
                     .then(() => {
-                    res.redirect('/books/all')
+                    res.redirect('/books/profile')
                     })
                     .catch(err => console.log(err))
                     
@@ -36,7 +37,7 @@ exports.books_post = (req, res) => {
                     obj.save()
                     books.save()
                     .then(() => {
-                    res.redirect('/books/all')
+                    res.redirect('/books/profile')
                     })
                     .catch(err => console.log(err))
                 }
@@ -47,4 +48,13 @@ exports.books_post = (req, res) => {
         }
     })
     .catch(err => console.log(err))
+}
+
+
+exports.books_get_details= (req,res)=>{
+    Books.findById(req.params.id).populate('author')
+    .then(book => {
+        console.log(book)
+        res.render('books/details',{data: book})
+    })
 }
