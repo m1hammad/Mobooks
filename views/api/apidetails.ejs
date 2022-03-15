@@ -1,0 +1,43 @@
+
+<% if(apidata.volumeInfo.imageLinks.medium){ %> 
+    <img src="<%= apidata.volumeInfo.imageLinks.medium %> " style="width: 20rem;">
+<% } else{ %> 
+    <img src="<%= apidata.volumeInfo.imageLinks.thumbnail %> " style="width: 20rem;">
+<% } %> 
+<div>
+    <h2><%= apidata.volumeInfo.title %></h2>
+
+</div>
+<div>Authors:
+    <h4><%= apidata.volumeInfo.authors %> </h4>
+</div>
+<div> Genre:
+    <h4><%= apidata.volumeInfo.categories %> </h4>
+</div>
+<div>Publisher: 
+    <h4><%= apidata.volumeInfo.publisher %> </h4>
+</div>
+<div> Date Published: 
+    <h4><%= apidata.volumeInfo.publishedDate %></h4>
+</div>
+<div><h5>Description:</h5>
+    <p id="desc">
+        <%= apidata.volumeInfo.description %> 
+    </p>
+</div>
+
+
+<form action="/books/random" method="post">
+    <% if(apidata.volumeInfo.imageLinks.medium){ %> 
+        <input type="hidden" name="imageLink" value="<%= apidata.volumeInfo.imageLinks.thumbnail%>">
+    <% } else{ %> 
+        <input type="hidden" name="imageLink" value="<%= apidata.volumeInfo.imageLinks.thumbnail %>">
+    <% } %> 
+    <input type="hidden" name="title" value="<%= apidata.volumeInfo.title %>">
+    <input type="hidden" name="name" value="<%= apidata.volumeInfo.authors %>">
+    <input type="hidden" name="genre" value="<%= apidata.volumeInfo.categories %>">
+    <input type="hidden" name="publisher" value="<%= apidata.volumeInfo.publisher %>">
+    <input type="hidden" name="publishDate" value="<%= apidata.volumeInfo.publishedDate %>">
+    <input type="hidden" name="description" value="<%= apidata.volumeInfo.description %>">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

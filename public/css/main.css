@@ -1,0 +1,8 @@
+.card-deck{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-row-gap: 100px;
+    justify-items: center;
+    align-items: center;
+}

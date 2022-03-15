@@ -1,0 +1,27 @@
+<div>
+    <form action="/api/search" method="get">
+        <label>Search</label>
+        <input type="text" name ='book'>
+        <button type="submit">submit</button>
+    </form><br>
+</div>
+<% if(data.length){ %> 
+    <div class="card-deck"> 
+        <% data.forEach( (data) => { %> 
+        
+            <div class="card" style="width: 18rem;">
+                <img src="<%= data.imageLink %> ">
+                <div class="card-body">
+                    <h4 class="card-title"><%= data.title %> </h4>
+                    <h6 class="card-title"><%= data.authors %> </h6>
+                    <a href="/api/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
+                </div>
+            </div> 
+
+        <% }) %> 
+    </div>
+<% } else { %>
+    <h5>No Books Chosen</h5>
+<% } %>
+
+

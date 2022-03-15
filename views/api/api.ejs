@@ -1,0 +1,27 @@
+<div>
+    <form action="/api/search" method="get">
+        <label>Search</label>
+        <input type="text" name ='book'>
+        <button type="submit">submit</button>
+    </form><br>
+</div>
+<div class="card-deck"> 
+    <% apidata.forEach( (data) => { %> 
+    
+        <div class="card" style="width: 18rem;">
+            <% if(data.volumeInfo.imageLinks){ %> 
+                <img src="<%= data.volumeInfo.imageLinks.thumbnail %> ">
+            <% } else{ %> 
+            <div></div>
+            <% } %> 
+            <div class="card-body">
+                <h4 class="card-title"><%= data.volumeInfo.title %> </h4>
+                <h6 class="card-title"><%= data.volumeInfo.authors %> </h6>
+                <a href="/api/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
+            </div>
+        </div> 
+
+    <% }) %> 
+</div>
+
+
