@@ -9,9 +9,34 @@
     <title>MoBooks</title>
 </head>
 <body>
+    <% if(currentUser) {%> 
+        <h2>Welcome <%= currentUser.firstName %> <%= currentUser.lastName %></h2><br><br>
+     
+     <% }else{ %>     
+        <h2>Welcome. Please <a href="/auth/signin">login</a> or <a href="/auth/signup">signup</a>.</h2><br><br>
+     <% } %> 
+     <hr>
+     <% if(alerts.validationErrors){ %> 
+         <% alerts.validationErrors.forEach(function(msg){ %>
+             <div class="alert alert-danger">
+                 Your <%= msg.param %> has <%= msg.msg %> </div>
+                 <% }) } %> 
+     <% if(alerts.success){ %> 
+         <% alerts.success.forEach(function(msg){ %>
+             <div class="alert alert-success"><%= msg %> </div>
+         <% }) %>  
+     <% } else if(alerts.error){ %> 
+         <% alerts.error.forEach(function(msg){ %>
+             <div class="alert alert-danger"><%= msg %> </div>
+         <% }) %> 
+     <% } %>
     <nav>
         <a href="/" class="btn btn-outline-primary">home</a>
-        <a href="/auth/signin" class="btn btn-outline-primary" id="login">Login</a>
+        <% if(currentUser) {%>
+            <a href="/auth/logout" class="btn btn-outline-primary">Logout</a>
+        <% } else{ %> 
+            <a href="/auth/signin" class="btn btn-outline-primary" id="login">Login</a>
+        <% } %> 
     </nav><hr><br>
 
 

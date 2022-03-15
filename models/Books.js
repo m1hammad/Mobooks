@@ -6,6 +6,10 @@ const booksSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Author'
     }],
+    user: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     publisher: String,
     publishDate: String,
     description: String,
