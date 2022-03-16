@@ -30,18 +30,19 @@
 </div>
 
 <% if(currentUser){ %> 
-    <form action="/books/add" method="post">
-        <input type="hidden" name="imageLink" value="<%= data.imageLink%>">
-        <input type="hidden" name="title" value="<%= data.title %>">
-        <% data.author.forEach(author =>{ %> 
-            <input type="hidden" name="name" value="<%= author.name %>">
-        <% }) %> 
-        <% data.genre.forEach(genre =>{ %> 
-            <input type="hidden" name="genre" value="<%= genre %>">
-        <% }) %>     
-        <input type="hidden" name="publisher" value="<%= data.publisher %>">
-        <input type="hidden" name="publishDate" value="<%= data.publishDate %>">
-        <input type="hidden" name="description" value="<%= data.description %>">
-        <button type="submit" class="btn btn-primary">Add to Favourites</button>
-    </form>
+    <%  %> 
+        <form action="/profile/add" method="post">
+            <input type="hidden" name="imageLink" value="<%= data.imageLink%>">
+            <input type="hidden" name="title" value="<%= data.title %>">
+            <% data.author.forEach(author =>{ %> 
+                <input type="hidden" name="name" value="<%= author.name %>">
+            <% }) %> 
+            <% data.genre.forEach(genre =>{ %> 
+                <input type="hidden" name="genre" value="<%= genre %>">
+            <% }) %>     
+            <input type="hidden" name="publisher" value="<%= data.publisher %>">
+            <input type="hidden" name="publishDate" value="<%= data.publishDate %>">
+            <input type="hidden" name="description" value="<%= data.description %>">
+            <button type="submit" class="btn btn-primary">Add to Favourites</button>
+        </form>
 <% } %> 
