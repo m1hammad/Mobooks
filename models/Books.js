@@ -8,7 +8,9 @@ const booksSchema = mongoose.Schema({
     }],
     user: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        default: []
+        
     }],
     publisher: String,
     publishDate: String,

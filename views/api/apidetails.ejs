@@ -27,7 +27,7 @@
 </div>
 
 <% if(currentUser){ %> 
-    <form action="/books/add" method="post">
+    <form action="/profile/add" method="post">
         <% if(apidata.volumeInfo.imageLinks.medium){ %> 
             <input type="hidden" name="imageLink" value="<%= apidata.volumeInfo.imageLinks.thumbnail%>">
         <% } else{ %> 

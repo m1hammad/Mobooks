@@ -1,0 +1,28 @@
+<% if(currentUser){ %> 
+    <h2>Welcome Back <%= currentUser.firstName %> <%= currentUser.lastName %></h2><br><br>
+
+
+    <% if(mydata.length){ %> 
+        <div class="card-deck"> 
+            <% mydata.forEach( (data) => { %> 
+            
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= data.imageLink %> ">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= data.title %> </h4>
+                        <% data.author.forEach(author =>{ %> 
+                            <h6 class="card-title"><%= author.name %> </h6>
+                        <% }) %> 
+                        <a href="/books/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
+                    </div>
+                </div> 
+
+            <% }) %> 
+        </div>
+    <% } else { %>
+        <h5>Library currently empty</h5>
+    <% } %>
+<% } else{ %>
+    <h1 style="text-align: center;">Unauthorized User</h1> 
+    <p style="text-align: center;">If you wish to access this page please login or create an account <a href="/auth/signin">here</a>.</p>
+<% } %>

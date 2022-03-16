@@ -18,7 +18,7 @@ authCntrl.auth_signup_post)
 
 router.get('/signin', authCntrl.auth_signin_get)
 
-router.post('/signin', authCntrl.auth_signin_post)
+router.post('/signin', authCntrl.auth_signin_post, authCntrl.auth_signin_redirect)
 
 router.get('/logout', authCntrl.auth_logout_get)
 

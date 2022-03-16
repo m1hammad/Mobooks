@@ -13,19 +13,19 @@
 </div>
 <% if(data.length){ %> 
     <div class="card-deck"> 
-        <% data.forEach( (data) => { %> 
-        
-            <div class="card" style="width: 18rem;">
-                <img src="<%= data.imageLink %> ">
-                <div class="card-body">
-                    <h4 class="card-title"><%= data.title %> </h4>
-                    <% data.author.forEach(author =>{ %> 
-                        <h6 class="card-title"><%= author.name %> </h6>
-                    <% }) %> 
-                    <a href="/books/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
-                </div>
-            </div> 
-
+        <% data.forEach( (data, index) => { %> 
+            <% if(index < 16) {%> 
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= data.imageLink %> ">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= data.title %> </h4>
+                        <% data.author.forEach(author =>{ %> 
+                            <h6 class="card-title"><%= author.name %> </h6>
+                        <% }) %> 
+                        <a href="/books/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
+                    </div>
+                </div> 
+            <% } %> 
         <% }) %> 
     </div>
 <% } else { %>

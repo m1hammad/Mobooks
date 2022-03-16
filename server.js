@@ -50,13 +50,14 @@ const indexRoute = require('./routes/index')
 const bookIndex = require('./routes/bookList')
 const apiRoute = require('./routes/api')
 const authRoute = require('./routes/auth')
- 
+const profileRoute = require('./routes/profile')
 
 // Mouent routes
 app.use('/',indexRoute)
 app.use('/books',bookIndex)
 app.use('/api', apiRoute)
 app.use("/auth", authRoute)
+app.use('/profile', profileRoute)
 
 // connect to port
 app.listen(PORT, () => console.log(`listening to port: ${PORT}`))
