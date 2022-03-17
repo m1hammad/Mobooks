@@ -24,9 +24,9 @@
                         <% }) %> 
                         <a href="/books/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
                         <% if(currentUser.isAdmin){ %> 
-                            &emsp;&emsp;&emsp;
-                            <form method="POST" action="/profile/delete/<%= data.id %>?_method=DELETE" class="form-inline">
+                            <form method="POST" action="/profile/delete/<%= data.id %>?_method=DELETE" class="form-check form-check-inline">
                                 <button class="btn btn-primary">Delete</button>
+                                    
                             </form>
                         <% } %> 
                     </div>

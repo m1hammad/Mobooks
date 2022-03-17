@@ -1,7 +1,7 @@
 <% if(currentUser){ %> 
     <div>
         <img src="<%= mydata.imageLink %> " style="width: 20rem;">
-        <form action="/profile/rating/<%= mydata.id %>?_method=PUT" method="post" id="ratingform">
+        <form action="/profile/rating/<%= mydata.id %>?_method=PUT" method="post" id="ratingform" class="form-check form-check-inline">
             <label for="input-1" class="control-label">Rate This</label>
             <input id="rating" name="rating" class="rating" data-min="1" data-max="5" data-step="1" data-show-clear="false" data-show-caption="true">
             <button type="submit" class="btn btn-primary">Submit</button>
