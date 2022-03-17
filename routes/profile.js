@@ -12,10 +12,12 @@ router.get('/:id', profileCtrl.profile_list_get)
 
 router.get('/detail/:id', isLoggedIn,profileCtrl.profile_book_get_details)
 
-router.get('/delete/:id', isLoggedIn, profileCtrl.profile_book_delete_get)
+router.get('/remove/:id', isLoggedIn, profileCtrl.profile_book_delete_get)
 
 router.post('/add', isLoggedIn, profileCtrl.profile_books_post)
 
-router.put('/rating/:id', isLoggedIn, profileCtrl.profile_rating_post)
+router.put('/rating/:id', isLoggedIn, profileCtrl.profile_rating_put)
+
+router.delete('/delete/:id', isLoggedIn, profileCtrl.explore_delete)
 
 module.exports = router

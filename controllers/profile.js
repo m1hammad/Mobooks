@@ -27,11 +27,24 @@ exports.profile_book_delete_get = async (req, res) => {
     res.redirect(`/profile/${req.user._id}`)
 }
 
-exports.profile_rating_post = (req, res) => {
+exports.profile_rating_put = (req, res) => {
     
     Books.findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
         res.redirect(`/profile/detail/${req.params.id}`)
+    })
+    .catch( err=> {
+        console.log(err)
+    })
+}
+
+exports.explore_delete = (req, res) => {
+    Books.findByIdAndDelete(req.params.id)
+    .then(() => {
+        res.redirect('/books/all')
+    })
+    .catch( err=> {
+        console.log(err)
     })
 }
 

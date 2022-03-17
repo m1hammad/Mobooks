@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
         required: true,
         minlength: [6,"Password must be atleast 6 characters"]
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
     book: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Books'
