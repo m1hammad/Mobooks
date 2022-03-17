@@ -27,6 +27,14 @@ exports.profile_book_delete_get = async (req, res) => {
     res.redirect(`/profile/${req.user._id}`)
 }
 
+exports.profile_rating_post = (req, res) => {
+    
+    Books.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+        res.redirect(`/profile/detail/${req.params.id}`)
+    })
+}
+
 //   FAVOURITE after I'm able to fully decipher it
 exports.profile_books_post = async (req, res) => {
     let user = await Users.findById(req.user.id)
