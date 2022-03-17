@@ -1,0 +1,34 @@
+<% if(currentUser){ %> 
+    <div>
+        <img src="<%= mydata.imageLink %> " style="width: 20rem;">
+    </div>
+
+    <div>
+        <h2><%= mydata.title %></h2>
+
+    </div>
+    <div>Authors:
+        <% mydata.author.forEach(author =>{ %> 
+            <h4><%= author.name %> </h4>
+        <% }) %> 
+    </div>
+    <div> Genre:
+        <% mydata.genre.forEach(genre =>{ %> 
+            <h4><%= genre %> </h4>
+        <% }) %> 
+    </div>
+    <div>Publisher: 
+        <h4><%= mydata.publisher %> </h4>
+    </div>
+    <div> Date Published: 
+        <h4><%= mydata.publishDate %></h4>
+    </div>
+    <div><h5>Description:</h5>
+        <p id="desc">
+            <%= mydata.description %> 
+        </p>
+    </div>
+    <div>
+        <a href="/profile/delete/<%= mydata.id %>" class="btn btn-primary">Remove from Favourites</a>
+    </div>
+<% } %> 

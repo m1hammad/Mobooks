@@ -13,6 +13,20 @@ exports.profile_list_get = async (req, res) => {
     
 }
 
+exports.profile_book_get_details= (req,res)=>{
+    Books.findById(req.params.id).populate('author')
+    .then(book => {
+        res.render('profile/profileDetails',{mydata: book})
+    })
+}
+
+exports.profile_book_delete_get = async (req, res) => {
+    let user = await Users.findById(req.user.id)
+    await user.book.splice(user.book.indexOf(req.params.id), 1)
+    await user.save()
+    res.redirect(`/profile/${req.user._id}`)
+}
+
 //   FAVOURITE after I'm able to fully decipher it
 exports.profile_books_post = async (req, res) => {
     let user = await Users.findById(req.user.id)
