@@ -50,23 +50,19 @@ exports.explore_delete = (req, res) => {
 
 //   FAVOURITE after I'm able to fully decipher it
 exports.profile_books_post = async (req, res) => {
-    let user = await Users.findById(req.user.id)
-    Books.findOne({title: req.body.title})
-    .then((book,err) => {
+    let user = await Users.findById(req.user.id)        //  to populate data based on user logged in 
+    Books.findOne({title: req.body.title})              // to check if book even exits
+    .then((book,err) => {                                   
         
-        if (!(book && book.title === req.body.title) ){
-            const books = new Books(req.body)
+        if (!(book && book.title === req.body.title) ){     //if book doesnt exist and if book exists but doesn't have the title 
+            const books = new Books(req.body)               // create new book and connect all DB _id together
             Authors.findOne({name: req.body.name}).then( (author,err) => {
-                if (author && author.name === req.body.name) {
-                    console.log('first',author.name)
+                if (author && author.name === req.body.name) {      // if author exists and already has a name present
                     books.author.push(author._id)
-                    author.book.push(books._id)
-                    console.log(books._id)
+                    author.book.push(books._id)                     // save on the same author 
                     user.book.push(books._id)
                     books.user.push(req.user._id)
-                    console.log('before', user)
                     user.save()
-                    console.log('after', user)
                     author.save()
                     books.save()
                     .then(() => {
@@ -76,8 +72,7 @@ exports.profile_books_post = async (req, res) => {
                     
                 }
                 else {
-                    console.log('second',author)
-                    author = new Authors(req.body)
+                    author = new Authors(req.body)                  // save on new created author
                     books.author.push(author._id)
                     author.book.push(books._id)
                     console.log(books._id)
@@ -95,9 +90,9 @@ exports.profile_books_post = async (req, res) => {
                 }
             })
         }
-        else if(book && !(book.user.includes(req.user.id))){
+        else if(book && !(book.user.includes(req.user.id))){  //book exists but doesnt have id in current user
             console.log('im here')
-            user.book.push(book._id)
+            user.book.push(book._id)                           // add existing book to current user
             book.user.push(req.user._id)
             book.save()
             user.save()
@@ -107,6 +102,7 @@ exports.profile_books_post = async (req, res) => {
             .catch(err => console.log(err))
         }
         else{
+            req.flash('error','Book already exists in current user library')
             res.redirect('/')   // Add message that tells user the book has already been added
         }
     })
