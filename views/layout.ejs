@@ -25,16 +25,21 @@
     <title>MoBooks</title>
 </head>
 <body>
-     <br>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a href="/" class="btn btn-primary">home</a>
+        <a href="/" class="navbar-brand">home</a>
         <% if(currentUser) {%>
-            <a href="/profile/<%= currentUser._id %> " class="btn btn-outline-primary">My Profile</a>
+            <span class="navbar-text">
+                <a href="/profile/<%= currentUser._id %> " class="btn btn-outline-primary">My Profile</a>
+            </span>
         <% } %> 
         <% if(currentUser) {%>
-            <a href="/auth/logout" class="btn btn-primary">Logout</a>
+            <span class="navbar-text">
+                <a href="/auth/logout" class="btn btn-primary">Logout</a>
+            </span>
         <% } else{ %> 
-            <a href="/auth/signin" class="btn btn-primary" id="login">Login</a>
+            <span class="navbar-text">
+                <a href="/auth/signin" class="btn btn-primary" id="login">Login</a>
+            </span>
         <% } %> 
     </nav><hr><br>
     
