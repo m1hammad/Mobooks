@@ -6,9 +6,8 @@
  <% } %> 
 <div>
     <form action="/api/search" method="get">
-        <label>Search</label>
-        <input type="text" name ='book'>
-        <button type="submit">submit</button>
+        <input class="form-control d-inline" type="search" placeholder="Search" aria-label="Search" name="book" id="search">
+        <button type="submit" class="btn btn-outline-success d-inline">submit</button>
     </form><br>
 </div>
 <% if(data.length){ %> 
@@ -23,7 +22,7 @@
                             <h6 class="card-title"><%= author.name %> </h6>
                         <% }) %> 
                         <a href="/books/detail/<%= data.id %> " class="btn btn-primary">View Details</a>
-                        <% if(currentUser.isAdmin){ %> 
+                        <% if(currentUser && currentUser.isAdmin){ %> 
                             <form method="POST" action="/profile/delete/<%= data.id %>?_method=DELETE" class="form-check form-check-inline">
                                 <button class="btn btn-primary">Delete</button>
                                     
