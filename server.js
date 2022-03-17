@@ -10,7 +10,7 @@ require('./config/database')
 
 
 // Port Configuration
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 // Initialize Express Application
 const app = express();
